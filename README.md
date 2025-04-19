@@ -67,6 +67,11 @@ After 5 epochs, the model typically achieves:
 
 ---
 
+Loss Function
+This project uses the sparse_categorical_crossentropy loss function, which is well-suited for multi-class classification problems
+
+---
+
 ## 📜 License
 
 MIT — feel free to use, modify, and share!
