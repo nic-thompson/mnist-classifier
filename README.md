@@ -6,14 +6,20 @@ This is a simple image classifier trained on the [MNIST handwritten digits datas
 
 ## 📦 Project Structure
 
-mnist_classifier/  
-├── src/  
-│   └── train.py         # Trains and evaluates the model  
-├── models/  
-│   └── mnist_model.h5   # Trained model (saved after training)  
-├── .gitignore  
-├── README.md  
-└── requirements.txt     # (Optional) Add your dependencies here
+mnist_classifier/
+├── src/
+│ ├── train.py # Train and evaluate the model
+│ ├── predict.py # Predict using a trained model
+│ ├── prepare_custom_image.py # Preprocess custom images for inference
+├── models/
+│ └── mnist_model.h5 # Trained model (saved after training)
+├── images/
+│ ├── raw/ # Input images for prediction
+│ └── processed/ # Preprocessed grayscale images
+├── samples/ # Sample MNIST digits
+├── .gitignore
+├── README.md
+└── requirements.txt
 
 ---
 
@@ -24,7 +30,7 @@ mnist_classifier/
 \`\`\`bash
 python3 -m venv venv
 source venv/bin/activate
-pip install tensorflow
+pip install -r requirements.txt
 \`\`\`
 
 ### 2. Train the model
@@ -37,6 +43,15 @@ This will:
 - Download the MNIST dataset
 - Train a simple neural network
 - Save the model to `models/mnist_model.h5`
+
+---
+
+Predict using a custom image
+Preprocess your image (convert to 28x28 grayscale and normalize):
+
+python src/prepare_custom_image.py images/raw/your_image.png images/processed/your_image.png
+Run prediction:
+python src/predict.py images/processed/your_image.png
 
 ---
 
@@ -55,6 +70,8 @@ After 5 epochs, the model typically achieves:
 - TensorFlow 2  
 - Keras  
 - CLI & terminal tools for training and running
+- Pillow (image handling)
+- Matplotlib (for optional visual debugging)
 
 ---
 
@@ -68,7 +85,20 @@ After 5 epochs, the model typically achieves:
 ---
 
 Loss Function
-This project uses the sparse_categorical_crossentropy loss function, which is well-suited for multi-class classification problems
+This project uses sparse_categorical_crossentropy, which is ideal for multi-class classification tasks where labels are integers rather than one-hot encoded vectors. It measures how well the predicted probability distribution aligns with the true label.
+
+---
+
+💡 Future Enhancements
+ Predict digits from custom images
+
+ Image preprocessing pipeline
+
+ Convert to Keras .keras or SavedModel format
+
+ Web app using Flask or FastAPI
+
+ Deploy to HuggingFace Spaces or Streamlit
 
 ---
 
